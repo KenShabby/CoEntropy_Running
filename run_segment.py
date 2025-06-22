@@ -1,4 +1,7 @@
-''' This class should be able to take a runner's heart rate info, whether it be 
+from runner import Runner
+from hr_methods import reserve_HR
+
+''' This class should be able to take a runner's heart rate info, whether it be
 Max HR, lactate threshold HR, or heart rate reserve. Then based on the type of
 run planned (e.g. recovery run, medium-long run, aerobic run, speedwork) return
 a list of heart rate zones from 1 to 5 with them breaking down like this:
@@ -11,5 +14,14 @@ a list of heart rate zones from 1 to 5 with them breaking down like this:
 
 
 class RunSegment:
-    def __init__(self):
+    def __init__(self, segment_name, distance, low_hr, high_hr):
+        self.segment_name = segment_name
+        self.distance = distance
+        self.low_hr = low_hr
+        self.high_hr = high_hr
+
+    def hr_bounds(self, runner, method=reserve_HR):
+        return method(runner, self.low_hr, self.high_hr)
+
+    def reserve_HR(self, runner, low_hr, high_hr):
         pass

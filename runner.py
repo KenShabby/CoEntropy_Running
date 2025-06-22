@@ -1,6 +1,7 @@
 
 class Runner:
-    def __init__(self, name="Runner", age=35, maxHR=None, restingHR=None, LTHR=0):
+    def __init__(self, name="Runner", age=35, maxHR=220,
+                 restingHR=50, LTHR=0):
         self.name = name
         self.age = age
         self.maxHR = maxHR or self.estimate_max_hr()
@@ -13,3 +14,6 @@ class Runner:
 
     def calc_HRR(self):
         return self.maxHR - self.restingHR
+
+    def __repr__(self):
+        return f"Name: {self.name}, Age: {self.age}"
