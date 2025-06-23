@@ -1,18 +1,18 @@
 class Runner:
-    def __init__(self, name="Runner", age=35, maxHR=220, restingHR=50, LTHR=0):
+    def __init__(self, name="Runner", age=35, max_hr=220, resting_hr=50, lthr=0):
         self.name = name
         self.age = age
-        self.maxHR = maxHR or self.estimate_max_hr()
-        self.restingHR = restingHR
-        self.LTHR = LTHR
-        self.heart_rate_reserve = self.calc_HRR()
+        self.max_hr = max_hr or self.estimate_max_hr()
+        self.resting_hr = resting_hr
+        self.lthr = lthr
+        self.hr_reserve = self.calc_hrr()
 
     def estimate_max_hr(self):
         # Standard max hr formula
         return 220 - self.age
 
-    def calc_HRR(self):
-        return self.maxHR - self.restingHR
+    def calc_hrr(self):
+        return self.max_hr - self.resting_hr
 
     def __repr__(self):
         return f"Name: {self.name}, Age: {self.age}"
