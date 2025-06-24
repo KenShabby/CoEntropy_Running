@@ -3,9 +3,9 @@ Input from user:
 - Max HR
 - Resting heart rate
 - RHR
-- LTHR
+- LTHR - Not implemented yet
 
 Output:
 - Training heart rate zones
-- Training paces
-- Training schedules
+- Training paces - Not implemented yet
+- Training schedules - Not implemented yet

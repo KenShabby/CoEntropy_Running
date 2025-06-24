@@ -10,24 +10,26 @@ def main():
         name="Brendan",
         age=49,
         max_hr=174,
-        resting_hr=53
+        resting_hr=53,
+        lthr=157
     )
 
-    recovery = RunType(
-        name="recovery_run",
-        notes="Easy run after a hamstring pull."
+    tuesday_run = RunType(
+        name="general_aerobic_run",
+        notes="Will probably have to postpone due to calf pull."
     )
 
     segment = RunSegment(
-        name="10 mile recovery run",
-        distance=10.0,
-        segment_type="recovery_run"
+        name="9 mile recovery run",
+        distance=9.0,
+        segment_type="general_aerobic_run"
     )
 
-    recovery.add_segment(segment)
+    tuesday_run.add_segment(segment)
 
     # Print the run description
-    for segment in recovery.segments:
+    for segment in tuesday_run.segments:
+        print(tuesday_run.notes)
         print(segment.describe(brendan))
 
 

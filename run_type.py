@@ -1,5 +1,5 @@
 from hr_methods import reserve_hr
-from constants import ZONES_BY_SEGMENT
+from constants import HRR_ZONES_BY_SEGMENT
 
 
 class RunType:
@@ -17,7 +17,7 @@ class RunType:
                 "Only reserve heart rate zones are implemented so far.")
 
         try:
-            lower_pct, higher_pct = ZONES_BY_SEGMENT[segment_name]
+            lower_pct, higher_pct = HRR_ZONES_BY_SEGMENT[segment_name]
             return method(lower_pct, higher_pct)
         except KeyError:
             raise ValueError(f"Unknown segment type: {segment_name}")

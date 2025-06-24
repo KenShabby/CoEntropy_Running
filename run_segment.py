@@ -1,4 +1,4 @@
-from constants import ZONES_BY_SEGMENT
+from constants import HRR_ZONES_BY_SEGMENT
 from hr_methods import reserve_hr
 
 """ This class should be able to take a runner's heart rate info, whether it be
@@ -20,10 +20,10 @@ class RunSegment:
         self.segment_type = segment_type
 
     def hr_bounds(self, runner, method=reserve_hr):
-        if self.segment_type not in ZONES_BY_SEGMENT:
+        if self.segment_type not in HRR_ZONES_BY_SEGMENT:
             raise ValueError(f"Unknown segment type: {self.segment_type}")
 
-        lower_pct, higher_pct = ZONES_BY_SEGMENT[self.segment_type]
+        lower_pct, higher_pct = HRR_ZONES_BY_SEGMENT[self.segment_type]
         return method(runner, lower_pct, higher_pct)
 
     def describe(self, runner):

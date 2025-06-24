@@ -1,5 +1,5 @@
 
-ZONES_BY_SEGMENT = {
+HRR_ZONES_BY_SEGMENT = {
                 "recovery_run": (0.50, 0.70),
                 "long_run": (0.65, 0.78),
                 "medium_long_run": (0.65, 0.78),
