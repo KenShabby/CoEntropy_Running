@@ -1,10 +1,34 @@
+"""Segments such as repeats, intervals, etc. need to be implemented, but
+I'm not sure how I'll do it yet, since they're more pace based rather than
+heart rate based.
+"""
 
 HRR_ZONES_BY_SEGMENT = {
-                "recovery_run": (0.50, 0.70),
-                "long_run": (0.65, 0.78),
-                "medium_long_run": (0.65, 0.78),
-                "marathon_pace_run": (0.73, 0.84),
-                "general_aerobic_run": (0.62, 0.75),
-                "lactate_threshold_run": (0.77, 0.88),
-                "VO2_max_run": (0.91, 0.94),
-                }
+    "recovery_run": (0.50, 0.70),
+    "long_run": (0.65, 0.78),
+    "medium_long_run": (0.65, 0.78),
+    "marathon_pace_run": (0.73, 0.84),
+    "general_aerobic_run": (0.62, 0.75),
+    "lactate_threshold_run": (0.77, 0.88),
+    "VO2_max_run": (0.91, 0.94),
+}
+
+LTHR_ZONES_BY_SEGMENT = {
+    "recovery_run": (0.0, 0.0),
+    "long_run": (0.0, 0.0),
+    "medium_long_run": (0.0, 0.0),
+    "marathon_pace_run": (0.0, 0.0),
+    "general_aerobic_run": (0.0, 0.0),
+    "lactate_threshold_run": (0.0, 0.0),
+    "VO2_max_run": (0.0, 0.0),
+}
+
+MAX_HR_ZONES_BY_SEGMENT = {
+    "recovery_run": (0.0, 0.0),
+    "long_run": (0.0, 0.0),
+    "medium_long_run": (0.0, 0.0),
+    "marathon_pace_run": (0.0, 0.0),
+    "general_aerobic_run": (0.0, 0.0),
+    "lactate_threshold_run": (0.0, 0.0),
+    "VO2_max_run": (0.0, 0.0),
+}
