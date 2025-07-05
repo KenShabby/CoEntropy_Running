@@ -1,7 +1,3 @@
-"""Segments such as repeats, intervals, etc. need to be implemented, but
-I'm not sure how I'll do it yet, since they're more pace based rather than
-heart rate based.
-"""
 
 HRR_ZONES_BY_SEGMENT = {
     "recovery_run": (0.50, 0.70),
