@@ -1,5 +1,5 @@
 class Runner:
-    def __init__(self, name="Runner", age=35, max_hr=220, resting_hr=50, lthr=0):
+    def __init__(self, name="Runner", age=35, max_hr=185, resting_hr=55, lthr=160):
         self.name = name
         self.age = age
         self.max_hr = max_hr or self.estimate_max_hr()
