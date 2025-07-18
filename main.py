@@ -14,23 +14,24 @@ def main():
     # of heart rate zones for all potential runs. We'll state with HRR calculations.
 
     match choice.lower():
-        case "1":
+        case "1": # Calculate HR Zones
             choice = menus.hr_zone_menu()
-        case "2":
-            print("You chose 2")
+        case "2": # Plan a run
+            choice = menus.run_plan_menu()
         case "q":
+            print("Exiting!")
             sys.exit()
         case _:
             print("Invalid choice")
 
     match choice.lower():
-        case "1":
-            ...
-        case "2":
+        case "1": # Max Heart Rate Calculation
+            maxHR = menus.max_hr_zone_menu()
+        case "2": # HRR Calculation
             print_runner_zones()
-        case "3":
-            ...
-        case "q":
+        case "3": # LTHR Calculation
+            menus.lthr_menu()
+        case "q": # Quit
             sys.exit()
         case _:
             print("invalid choice")
