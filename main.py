@@ -1,8 +1,7 @@
-from constants import HRR_ZONES_BY_SEGMENT
-from hr_methods import reserve_hr
 from run_segment import RunSegment
 from run_type import RunType
 from runner import Runner
+import constants
 import menus
 import sys
 
@@ -27,18 +26,28 @@ def main():
     match choice.lower():
         case "1": # Max Heart Rate Calculation
             maxHR = menus.max_hr_zone_menu()
+            print_runner_zones("MAX_HR_ZONES_BY_SEGMENT", maxHR)
         case "2": # HRR Calculation
-            print_runner_zones()
+            hrr = menus.hrr_zone_menu()
+            print_runner_zones("HRR_ZONES_BY_SEGMENT", hrr)
         case "3": # LTHR Calculation
-            menus.lthr_menu()
+            lthr = menus.lthr_menu()
+            print_runner_zones("LTHR_ZONES_BY_SEGMENT", lthr)
         case "q": # Quit
             sys.exit()
         case _:
             print("invalid choice")
+            menus.hr_zone_menu()
 
-def print_runner_zones():
+def print_runner_zones(heart_rate_type, base_rate):
 
-    brendan = Runner("Brendan", 49, 174, 56, 157)
+    match heart_rate_type:
+        case "MAX_HR_ZONES_BY_SEGMENT":
+            runner = Runner("Runner", 35, base_rate, 0, 0)
+        case "HRR_ZONES_BY_SEGMENT":
+            runner = Runner("Runner", 35, 0, base_rate, 0)
+        case "LTHR_ZONES_BY_SEGMENT":
+            runner = Runner("Runner", 35, 0, 0, base_rate)
 
     run = RunType(
         name = "All run types",
@@ -56,7 +65,7 @@ def print_runner_zones():
     # Print the run description
     for segment in run.segments:
         print(run.notes)
-        print(segment.describe(brendan))
+        print(segment.describe(runner))
 
 if __name__ == "__main__":
     main()

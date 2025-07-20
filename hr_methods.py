@@ -7,6 +7,3 @@ def reserve_hr(runner, lower_pct, upper_pct):
         round(runner.resting_hr + lower_pct * hrr),
         round(runner.resting_hr + upper_pct * hrr),
     )
-
-
-def lthr(runner, lower_pct, upper_pct): ...

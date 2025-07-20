@@ -1,3 +1,8 @@
+""" This class is for run segments that have sprint/recover repeats. For example,
+the runner might run 1 km at their 5K pace and then spend a couple of minutes
+recovering at an easy pace. Then this process repeats, typically 5 to 10 times.
+"""
+
 from hr_methods import reserve_hr
 from run_segment import RunSegment
 

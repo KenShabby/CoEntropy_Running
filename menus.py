@@ -30,7 +30,7 @@ def max_hr_zone_menu():
     else:
         age = int(input("What is your age: "))
         maxHR = (220 - age)
-        print(f"We'll use {maxHR} beats per minute as an estimate")
+        print(f"We'll use {maxHR} beats per minute as an estimate.")
     return maxHR
 
 def hrr_zone_menu():
@@ -39,7 +39,8 @@ def hrr_zone_menu():
     return max_hr, rest_hr
 
 def lthr_menu():
-    ...
+    lthr = input("Enter your lactate threshhold heart rate: ")
+    return lthr
 
 """
     This section will handle the run planning logic
