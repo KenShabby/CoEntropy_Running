@@ -4,8 +4,8 @@ whether they be warm-up/cool-down, long-run, or a interval/rest sequence.
 """
 
 from hr_methods import reserve_hr
-from constants import HRR_ZONES_BY_SEGMENT
 from run_segment import RunSegment
+import constants
 
 
 class RunType:
@@ -25,7 +25,7 @@ class RunType:
             raise ValueError("Only reserve heart rate zones are implemented so far.")
 
         try:
-            lower_pct, higher_pct = HRR_ZONES_BY_SEGMENT[segment_name]
+            lower_pct, higher_pct = constants.HRR_ZONES_BY_SEGMENT[segment_name]
             return method(lower_pct, higher_pct)
         except KeyError:
             raise ValueError(f"Unknown segment type: {segment_name}")

@@ -1,7 +1,7 @@
+from constants import *
 from run_segment import RunSegment
 from run_type import RunType
 from runner import Runner
-import constants
 import menus
 import sys
 
@@ -25,7 +25,7 @@ def main():
 
     match choice.lower():
         case "1": # Max Heart Rate Calculation
-            maxHR = menus.max_hr_zone_menu()
+            maxHR = int(menus.max_hr_zone_menu())
             print_runner_zones("MAX_HR_ZONES_BY_SEGMENT", maxHR)
         case "2": # HRR Calculation
             hrr = menus.hrr_zone_menu()

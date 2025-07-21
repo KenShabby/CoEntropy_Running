@@ -4,28 +4,26 @@ run planned (e.g. recovery run, medium-long run, aerobic run, speedwork) return
 a list of heart rate zones.
 """
 
-from constants import HRR_ZONES_BY_SEGMENT
 from hr_methods import reserve_hr
-
+from constants import *
 
 
 class RunSegment:
     def __init__(self, name, distance, segment_type):
         self.name = name
         self.distance = distance
-        self.segment_type = segment_type
 
     def hr_bounds(self, runner, method=reserve_hr):
-        if self.segment_type not in HRR_ZONES_BY_SEGMENT:
-            raise ValueError(f"Unknown segment type: {self.segment_type}")
+        if self.name not in HRR_ZONES_BY_SEGMENT:
+            raise ValueError(f"Unknown segment type: {self.name}")
 
-        lower_pct, higher_pct = HRR_ZONES_BY_SEGMENT[self.segment_type]
+        lower_pct, higher_pct = HRR_ZONES_BY_SEGMENT[self.name]
         return method(runner, lower_pct, higher_pct)
 
     def describe(self, runner):
         low, high = self.hr_bounds(runner)
         segment_title = self.name
-        segment_type_clean = self.segment_type.replace('_', ' ').title()
+        segment_type_clean = self.name.replace('_', ' ').title()
 
         return (
             f"--- {segment_title} ---\n"
