@@ -9,7 +9,7 @@ from constants import *
 
 
 class RunSegment:
-    def __init__(self, name, distance, segment_type):
+    def __init__(self, name, distance):
         self.name = name
         self.distance = distance
 

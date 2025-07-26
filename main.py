@@ -54,7 +54,7 @@ def print_runner_zones(heart_rate_type, base_rate):
         notes = ""
     )
 
-    for segment in HRR_ZONES_BY_SEGMENT:
+    for segment in heart_rate_type:
         temp = RunSegment(
             name = segment,
             distance = 1.0,

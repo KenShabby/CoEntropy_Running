@@ -3,8 +3,7 @@ This class keeps track of the individual's name, age, and heart rate stats.
 """
 
 class Runner:
-    def __init__(self, name, age, max_hr, resting_hr, lthr):
-        self.name = name
+    def __init__(self, age, max_hr, resting_hr, lthr):
         self.age = age
         self.max_hr = max_hr or self.estimate_max_hr()
         self.resting_hr = resting_hr
@@ -19,5 +18,5 @@ class Runner:
         return self.max_hr - self.resting_hr
 
     def __repr__(self):
-        return f"Name: {self.name}, Age: {self.age}, Max HR: {self.max_hr}\
-                Resting HR: {self.resting_hr}, Lactate Threshold HR: {self.lthr}"
+        return f"Age: {self.age}, Max HR: {self.max_hr}, Resting HR: \
+                {self.resting_hr}, Lactate Threshold HR: {self.lthr}"
