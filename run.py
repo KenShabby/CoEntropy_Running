@@ -21,15 +21,16 @@ class Run:
         return self.segments.pop()
 
     def get_run_summary(self) -> str:
-        summary = f"Run Summary for {self.runner}\n"
+        summary = "--------------------------------------------\n"
+        summary += f"Run Summary for {self.runner.name}\n"
         summary += f"Using HR Method: {self.runner.hr_method.value}\n"
-        summary += "---------------------------------------\n"
+        summary += "--------------------------------------------\n"
         for i, segment in enumerate(self.segments):
             lower_hr, upper_hr = self.runner.calculate_segment_hr_range(segment.name)
 
             summary += f"Segment {i + 1}: {segment.name.description} - Duration: {segment.duration}"
             if segment.distance:
-                summary += f", Distance: {segment.distance:.2f} km"
+                summary += f", Distance: {segment.distance:.2f} mi"
             summary += (
                 f", Target HR: {lower_hr}-{upper_hr} bpm"  # Display calculated HR range
             )

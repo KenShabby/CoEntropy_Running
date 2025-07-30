@@ -15,27 +15,7 @@ class RunSegment:
         self.distance = distance
         self.duration = time
         self.notes = notes
-        self._low_hr_bound = 0
-        self._high_hr_bound = 0
 
     def hr_bounds(self):
         if self.name not in SegmentType:
             raise ValueError(f"Unknown segment type: {self.name}")
-
-        bounds_tuple = zone_percentages.HR_ZONE_PERCENTAGES[
-            (self.name, HeartRateZoneMethods.MAX_HR)
-        ]
-        print(f"Bounds tuple: {bounds_tuple}")
-
-        self._low_hr_bound, self._high_hr_bound = bounds_tuple[0], bounds_tuple[1]
-
-    def describe(self):
-        low, high = self._low_hr_bound, self._high_hr_bound
-        segment_type_clean = self.name.replace("_", " ").title()
-
-        return (
-            f"--- Segment ---\n"
-            f"Type       : {segment_type_clean}\n"
-            f"Distance   : {self.distance:.1f} miles\n"
-            f"HR Target  : {low:.0f} – {high:.0f} bpm\n"
-        )

@@ -27,15 +27,21 @@ def main():
     match choice.lower():
         case "1":  # Max Heart Rate Calculation
             maxHR = int(menus.max_hr_zone_menu())
-            brendan = Runner(49, HeartRateZoneMethods.MAX_HR, 0, 0, 0, maxHR)
+            brendan = Runner("Brendan", 49, HeartRateZoneMethods.MAX_HR, 0, 0, 0, maxHR)
         case "2":  # HRR Calculation
             hr_max, hr_min = menus.hrr_zone_menu()
             brendan = Runner(
-                49, HeartRateZoneMethods.HR_RESERVE, int(hr_min), 0, 0, int(hr_max)
+                "Brendan",
+                49,
+                HeartRateZoneMethods.HR_RESERVE,
+                int(hr_min),
+                0,
+                0,
+                int(hr_max),
             )
         case "3":  # LTHR Calculation
             lthr = menus.lthr_menu()
-            brendan = Runner(49, HeartRateZoneMethods.LTHR, 0, int(lthr))
+            brendan = Runner("Brendan", 49, HeartRateZoneMethods.LTHR, 0, int(lthr))
         case "q":  # Quit
             sys.exit()
         case _:
@@ -44,7 +50,6 @@ def main():
 
     # Create a run
     my_run = Run(brendan, [])
-    print(my_run)
     long_run_segment = RunSegment(SegmentType.LONG_RUN, 9)
     long_run_segment.hr_bounds()
     my_run.add_segment(long_run_segment)

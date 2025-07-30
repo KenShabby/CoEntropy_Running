@@ -11,6 +11,7 @@ from hr_zone_methods import HeartRateZoneMethods
 
 @dataclass
 class Runner:
+    name: str
     age: int
     hr_method: HeartRateZoneMethods
     resting_hr: int = 0
@@ -73,6 +74,4 @@ class Runner:
         return (lower_hr, upper_hr)
 
     def __repr__(self):
-        return f"Age: {self.age}, Heart Rate Calculation Method: {self.hr_method},\
-                Max HR: {self.max_hr}, Resting HR: {self.resting_hr}, HR Reserve:\
-                 {self.hrr}, Lactate Threshold HR: {self.lthr}"
+        return f"Age: {self.age}, Heart Rate Calculation Method: {self.hr_method}, Max HR: {self.max_hr}, Resting HR: {self.resting_hr}, HR Reserve: {self.hrr}, Lactate Threshold HR: {self.lthr}"
