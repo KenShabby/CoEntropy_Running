@@ -1,5 +1,8 @@
-import hr_zone_methods
+from hr_zone_methods import HeartRateZoneMethods
+from run import Run
+from run_segment import RunSegment
 from runner import Runner
+from segment_type import SegmentType
 import menus
 import sys
 
@@ -24,18 +27,28 @@ def main():
     match choice.lower():
         case "1":  # Max Heart Rate Calculation
             maxHR = int(menus.max_hr_zone_menu())
-            brendan = Runner(49, hr_zone_methods.MAX_HR, 0, 0, 0, maxHR)
+            brendan = Runner(49, HeartRateZoneMethods.MAX_HR, 0, 0, 0, maxHR)
         case "2":  # HRR Calculation
             hr_max, hr_min = menus.hrr_zone_menu()
-            brendan = Runner(49, hr_zone_methods.HR_RESERVE, hr_min, 0, 0, hr_max)
+            brendan = Runner(
+                49, HeartRateZoneMethods.HR_RESERVE, int(hr_min), 0, 0, int(hr_max)
+            )
         case "3":  # LTHR Calculation
             lthr = menus.lthr_menu()
-            brendna = Runner(49, hr_zone_methods.LTHR, 0, lthr)
+            brendan = Runner(49, HeartRateZoneMethods.LTHR, 0, int(lthr))
         case "q":  # Quit
             sys.exit()
         case _:
             print("invalid choice")
             menus.hr_zone_menu()
+
+    # Create a run
+    my_run = Run(brendan, [])
+    print(my_run)
+    long_run_segment = RunSegment(SegmentType.LONG_RUN, 9)
+    long_run_segment.hr_bounds()
+    my_run.add_segment(long_run_segment)
+    print(my_run.get_run_summary())
 
 
 if __name__ == "__main__":

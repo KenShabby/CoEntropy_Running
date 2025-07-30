@@ -2,7 +2,7 @@
 This class keeps track of the individual's name, age, and heart rate stats.
 """
 
-from constants import HR_ZONE_PERCENTAGES
+from zone_percentages import HR_ZONE_PERCENTAGES
 from run_segment import SegmentType
 from typing import Tuple
 from dataclasses import dataclass

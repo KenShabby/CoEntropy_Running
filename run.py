@@ -5,7 +5,6 @@ whether they be warm-up/cool-down, long-run, or a interval/rest sequence.
 
 from dataclasses import dataclass
 from run_segment import RunSegment
-import constants
 from runner import Runner
 from typing import List
 
