@@ -11,3 +11,8 @@ Desired Features:
 - Generate individual run plans.
 - Generate entire training plans.
 - Implement a more friendly front-end.
+
+Running:
+
+- Clone to the directory of your choice
+- run `python CoEntropy_Running/main.py`
