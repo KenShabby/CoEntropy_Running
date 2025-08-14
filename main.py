@@ -5,8 +5,43 @@ from runner import Runner
 from segment_type import SegmentType
 import menus
 import sys
+import cmd
 
 
+class REPL(cmd.Cmd):
+    """A test REPL for my running heart rate calculator."""
+
+    intro = "Welcome to CoEntropy Running! Type Help for commands.\n"
+    prompt = " CoEntropy Running > "
+
+    def __init__(self):
+        super().__init__()
+
+    def do_max_heart_rate(self):
+        """Calculate max heart rate zones"""
+        pass
+
+    def do_hrr_heart_rate(self):
+        """Calculate heart rate reserver zones"""
+        pass
+
+    def do_lthr_heart_rate(self):
+        """Calculate lactate threshold heart rate zones"""
+        pass
+
+
+def main():
+    """Entry point for the REPL application"""
+    try:
+        REPL().cmdloop()
+    except KeyboardInterrupt:
+        print("\nGoodbye!")
+        sys.exit(0)
+
+
+if __name__ == "__main__":
+    main()
+"""
 def main():
     choice = menus.main_menu()
 
@@ -50,11 +85,18 @@ def main():
 
     # Create a run
     my_run = Run(brendan, [])
-    long_run_segment = RunSegment(SegmentType.LONG_RUN, 9)
+
+    long_run_segment = RunSegment(SegmentType.LONG_RUN, 1)
     long_run_segment.hr_bounds()
     my_run.add_segment(long_run_segment)
+
+    recovery_run_segment = RunSegment(SegmentType.RECOVERY_RUN, 1)
+    recovery_run_segment.hr_bounds()
+    my_run.add_segment(recovery_run_segment)
+
+    medium_long_run_segment = RunSegment(SegmentType.MEDIUM_LONG_RUN, 1)
+    medium_long_run_segment.hr_bounds()
+    my_run.add_segment(medium_long_run_segment)
+
     print(my_run.get_run_summary())
-
-
-if __name__ == "__main__":
-    main()
+"""
