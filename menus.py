@@ -1,15 +1,3 @@
-
-def main_menu():
-    print("""
-        *** MENU ***
-        1. Calculate heart rate zones
-        2. Plan a run
-
-        Q. Exit
-        """)
-
-    return input("Enter your choice: ")
-
 def hr_zone_menu():
     print("""
         *** Enter a heart rate calculation method ***
@@ -23,28 +11,33 @@ def hr_zone_menu():
 
     return input("Enter your choice: ")
 
+
 def max_hr_zone_menu():
     known = input("Do you know your maximum heart rate? (y/n): ")
     if known.lower() == "y":
         maxHR = input("What is your max HR: ")
     else:
         age = int(input("What is your age: "))
-        maxHR = (220 - age)
+        maxHR = 220 - age
         print(f"We'll use {maxHR} beats per minute as an estimate.")
     return maxHR
 
+
 def hrr_zone_menu():
-    max_hr = input("Enter Max HR: ")  
+    max_hr = input("Enter Max HR: ")
     rest_hr = input("Enter resting HR: ")
     return max_hr, rest_hr
+
 
 def lthr_menu():
     lthr = input("Enter your lactate threshhold heart rate: ")
     return lthr
 
+
 """
     This section will handle the run planning logic
 """
+
 
 def run_plan_menu():
     print("""

@@ -17,17 +17,28 @@ class REPL(cmd.Cmd):
     def __init__(self):
         super().__init__()
 
-    def do_max_heart_rate(self):
+    def do_max(self, line: str):
         """Calculate max heart rate zones"""
-        pass
+        maxHR = int(menus.max_hr_zone_menu())
+        brendan = Runner("Brendan", 49, HeartRateZoneMethods.MAX_HR, 0, 0, 0, maxHR)
+        my_run = Run(brendan, [])
 
-    def do_hrr_heart_rate(self):
+    def do_hrr(self, line: str):
         """Calculate heart rate reserver zones"""
-        pass
+        hr_max, hr_min = menus.hrr_zone_menu()
+        brendan = Runner(
+            "Brendan",
+            49,
+            HeartRateZoneMethods.HR_RESERVE,
+            int(hr_min),
+            0,
+            0,
+            int(hr_max),
+        )
 
-    def do_lthr_heart_rate(self):
+    def do_lthr(self, line: str):
         """Calculate lactate threshold heart rate zones"""
-        pass
+        menus.lthr_menu()
 
 
 def main():
@@ -39,41 +50,13 @@ def main():
         sys.exit(0)
 
 
+def build_run(run: Runner):
+    pass
+
+
 if __name__ == "__main__":
     main()
 """
-def main():
-    choice = menus.main_menu()
-
-    # For the initial stage of the app, we can just have the app print a table
-    # of heart rate zones for all potential runs. We'll state with HRR calculations.
-
-    match choice.lower():
-        case "1":  # Calculate HR Zones
-            choice = menus.hr_zone_menu()
-        case "2":  # Plan a run
-            choice = menus.run_plan_menu()
-        case "q":
-            print("Exiting!")
-            sys.exit()
-        case _:
-            print("Invalid choice")
-
-    match choice.lower():
-        case "1":  # Max Heart Rate Calculation
-            maxHR = int(menus.max_hr_zone_menu())
-            brendan = Runner("Brendan", 49, HeartRateZoneMethods.MAX_HR, 0, 0, 0, maxHR)
-        case "2":  # HRR Calculation
-            hr_max, hr_min = menus.hrr_zone_menu()
-            brendan = Runner(
-                "Brendan",
-                49,
-                HeartRateZoneMethods.HR_RESERVE,
-                int(hr_min),
-                0,
-                0,
-                int(hr_max),
-            )
         case "3":  # LTHR Calculation
             lthr = menus.lthr_menu()
             brendan = Runner("Brendan", 49, HeartRateZoneMethods.LTHR, 0, int(lthr))
@@ -84,7 +67,6 @@ def main():
             menus.hr_zone_menu()
 
     # Create a run
-    my_run = Run(brendan, [])
 
     long_run_segment = RunSegment(SegmentType.LONG_RUN, 1)
     long_run_segment.hr_bounds()
