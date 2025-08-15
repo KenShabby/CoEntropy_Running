@@ -11,13 +11,13 @@ import cmd
 class REPL(cmd.Cmd):
     """A test REPL for my running heart rate calculator."""
 
-    intro = "Welcome to CoEntropy Running! Type Help for commands.\n"
-    prompt = " CoEntropy Running > "
+    intro = "Welcome to CoEntropy Running! Type 'help' for commands.\n"
+    prompt = "CoEntropy Running > "
 
     def __init__(self):
         super().__init__()
 
-    def do_exit(self, arg=""):
+    def do_exit(self, _):
         "Exit program"
         print("Goodbye!")
         sys.exit(0)
@@ -28,11 +28,11 @@ class REPL(cmd.Cmd):
             maxHR = int(arg)
         else:
             maxHR = int(menus.max_hr_zone_menu())
-        brendan = Runner("Brendan", 49, HeartRateZoneMethods.MAX_HR, 0, 0, 0, maxHR)
+        brendan = Runner("Brendan", 49, HeartRateZoneMethods.MAX_HR, max_hr=maxHR)
         my_run = Run(brendan, [])
-        build_run(my_run)
+        zones_report(my_run)
 
-    def do_hrr(self, line: str):
+    def do_hrr(self, _):
         """Calculate heart rate reserver zones"""
         hr_max, hr_min = menus.hrr_zone_menu()
         brendan = Runner(
@@ -44,6 +44,8 @@ class REPL(cmd.Cmd):
             0,
             int(hr_max),
         )
+        my_run = Run(brendan, [])
+        zones_report(my_run)
 
     def do_lthr(self, arg: str):
         """Calculate lactate threshold heart rate zones"""
@@ -53,9 +55,9 @@ class REPL(cmd.Cmd):
             threshhold = int(input("Enter your lactate threshhold heart rate: "))
         brendan = Runner("Brendan", 49, HeartRateZoneMethods.LTHR, lthr=threshhold)
         run = Run(brendan, [])
-        build_run(run)
+        zones_report(run)
 
-    def do_quit(self, arg: str):
+    def do_quit(self, _):
         "Exit program"
         print("Goodbye!")
         sys.exit(0)
@@ -70,9 +72,12 @@ def main():
         sys.exit(0)
 
 
-def build_run(run: Run):
-    segment = RunSegment(SegmentType.EASY_RUN, distance=1)
-    run.add_segment(segment)
+def zones_report(run: Run):
+    """This is ugly, but for now I'm just creating a 1 mile segment for each run
+    and printing that."""
+    for segement_type in SegmentType:
+        segment = RunSegment(segement_type, distance=1)
+        run.add_segment(segment)
     print(run.get_run_summary())
 
 
