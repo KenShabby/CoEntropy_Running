@@ -1,17 +1,3 @@
-def hr_zone_menu():
-    print("""
-        *** Enter a heart rate calculation method ***
-
-        1. Max heart rate
-        2. Heart rate reserve
-        3. Lactate threshold heart rate
-
-        Q. Exit
-        """)
-
-    return input("Enter your choice: ")
-
-
 def max_hr_zone_menu():
     known = input("Do you know your maximum heart rate? (y/n): ")
     if known.lower() == "y":
@@ -30,7 +16,6 @@ def hrr_zone_menu():
 
 
 def lthr_menu():
-    lthr = input("Enter your lactate threshhold heart rate: ")
     return lthr
 
 

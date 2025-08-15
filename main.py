@@ -17,11 +17,16 @@ class REPL(cmd.Cmd):
     def __init__(self):
         super().__init__()
 
+    def do_exit(self, arg=""):
+        print("Goodbye!")
+        sys.exit(0)
+
     def do_max(self, line: str):
         """Calculate max heart rate zones"""
         maxHR = int(menus.max_hr_zone_menu())
         brendan = Runner("Brendan", 49, HeartRateZoneMethods.MAX_HR, 0, 0, 0, maxHR)
         my_run = Run(brendan, [])
+        build_run(my_run)
 
     def do_hrr(self, line: str):
         """Calculate heart rate reserver zones"""
@@ -38,7 +43,14 @@ class REPL(cmd.Cmd):
 
     def do_lthr(self, line: str):
         """Calculate lactate threshold heart rate zones"""
-        menus.lthr_menu()
+        threshhold = int(input("Enter your lactate threshhold heart rate: "))
+        brendan = Runner("Brendan", 49, HeartRateZoneMethods.LTHR, lthr=threshhold)
+        run = Run(brendan, [])
+        build_run(run)
+
+    def do_quit(self, arg: str):
+        print("Goodbye!")
+        sys.exit(0)
 
 
 def main():
@@ -50,24 +62,15 @@ def main():
         sys.exit(0)
 
 
-def build_run(run: Runner):
-    pass
+def build_run(run: Run):
+    segment = RunSegment(SegmentType.EASY_RUN, distance=1)
+    run.add_segment(segment)
+    print(run.get_run_summary())
 
 
 if __name__ == "__main__":
     main()
 """
-        case "3":  # LTHR Calculation
-            lthr = menus.lthr_menu()
-            brendan = Runner("Brendan", 49, HeartRateZoneMethods.LTHR, 0, int(lthr))
-        case "q":  # Quit
-            sys.exit()
-        case _:
-            print("invalid choice")
-            menus.hr_zone_menu()
-
-    # Create a run
-
     long_run_segment = RunSegment(SegmentType.LONG_RUN, 1)
     long_run_segment.hr_bounds()
     my_run.add_segment(long_run_segment)
