@@ -1,6 +1,6 @@
 Objective: An application that allows the user to fine tune their training zones
 based on the common heart rate tracking methods. The default zones are based on 
-the book: Advanced Marathoning by Pete Pfitinger and Scott Douglas.
+the book: Advanced Marathoning by Pete Pfitzinger and Scott Douglas.
 
 Implemented Features:
 
