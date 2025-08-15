@@ -18,12 +18,16 @@ class REPL(cmd.Cmd):
         super().__init__()
 
     def do_exit(self, arg=""):
+        "Exit program"
         print("Goodbye!")
         sys.exit(0)
 
-    def do_max(self, line: str):
-        """Calculate max heart rate zones"""
-        maxHR = int(menus.max_hr_zone_menu())
+    def do_max(self, arg: str):
+        """Calculate max heart rate zones. usage: max <your max HR>"""
+        if arg:
+            maxHR = int(arg)
+        else:
+            maxHR = int(menus.max_hr_zone_menu())
         brendan = Runner("Brendan", 49, HeartRateZoneMethods.MAX_HR, 0, 0, 0, maxHR)
         my_run = Run(brendan, [])
         build_run(my_run)
@@ -41,14 +45,18 @@ class REPL(cmd.Cmd):
             int(hr_max),
         )
 
-    def do_lthr(self, line: str):
+    def do_lthr(self, arg: str):
         """Calculate lactate threshold heart rate zones"""
-        threshhold = int(input("Enter your lactate threshhold heart rate: "))
+        if arg:
+            threshhold = int(arg)
+        else:
+            threshhold = int(input("Enter your lactate threshhold heart rate: "))
         brendan = Runner("Brendan", 49, HeartRateZoneMethods.LTHR, lthr=threshhold)
         run = Run(brendan, [])
         build_run(run)
 
     def do_quit(self, arg: str):
+        "Exit program"
         print("Goodbye!")
         sys.exit(0)
 
