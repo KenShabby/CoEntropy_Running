@@ -13,19 +13,3 @@ def hrr_zone_menu():
     max_hr = input("Enter Max HR: ")
     rest_hr = input("Enter resting HR: ")
     return max_hr, rest_hr
-
-
-def lthr_menu():
-    return lthr
-
-
-"""
-    This section will handle the run planning logic
-"""
-
-
-def run_plan_menu():
-    print("""
-        Run planning coming soon!
-        """)
-    return ""
