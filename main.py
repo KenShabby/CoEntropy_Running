@@ -28,7 +28,7 @@ class REPL(cmd.Cmd):
             maxHR = int(arg)
         else:
             maxHR = int(menus.max_hr_zone_menu())
-        brendan = Runner("Brendan", 49, HeartRateZoneMethods.MAX_HR, max_hr=maxHR)
+        brendan = Runner("Runner", 49, HeartRateZoneMethods.MAX_HR, max_hr=maxHR)
         my_run = Run(brendan, [])
         zones_report(my_run)
 
@@ -36,7 +36,7 @@ class REPL(cmd.Cmd):
         """Calculate heart rate reserver zones"""
         hr_max, hr_min = menus.hrr_zone_menu()
         brendan = Runner(
-            "Brendan",
+            "Runner",
             49,
             HeartRateZoneMethods.HR_RESERVE,
             int(hr_min),
@@ -53,7 +53,7 @@ class REPL(cmd.Cmd):
             threshhold = int(arg)
         else:
             threshhold = int(input("Enter your lactate threshhold heart rate: "))
-        brendan = Runner("Brendan", 49, HeartRateZoneMethods.LTHR, lthr=threshhold)
+        brendan = Runner("Runner", 49, HeartRateZoneMethods.LTHR, lthr=threshhold)
         run = Run(brendan, [])
         zones_report(run)
 
