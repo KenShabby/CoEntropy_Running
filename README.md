@@ -18,6 +18,7 @@ Implemented Features:
 
 Desired Features:
 
+- Implement more generic five zone calculations.
 - Generate individual run plans.
 - Generate entire training plans.
 
